@@ -1,5 +1,8 @@
-import { Request, Response } from "express";
+import { Response } from "express";
+import { IContactFormRequest } from "../types/contactInterfaces";
+import { StatusCodes } from "http-status-codes";
 
-export const formController = (_req: Request, res: Response) => {
-  res.send("Form route");
+export const formController = (req: IContactFormRequest, res: Response) => {
+  console.log(req.body);
+  res.status(StatusCodes.OK).json({ data: req.body });
 };
