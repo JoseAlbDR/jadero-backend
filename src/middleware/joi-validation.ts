@@ -1,12 +1,11 @@
 import { NextFunction, Request, Response } from "express";
-import { validateJobFilters } from "../utils/joiValidation";
-import { CustomBody } from "../types/mongoInterfaces";
 import { BadRequestError } from "../errors";
 import Joi from "joi";
+import { IContactForm } from "../types/contactInterfaces";
 
-type ValidationFunction = <T extends CustomBody>(
+type ValidationFunction = <T extends IContactForm>(
   data: T
-) => Joi.ValidationResult<CustomBody>;
+) => Joi.ValidationResult<IContactForm>;
 
 const validateBody =
   (validationFunction: ValidationFunction) =>
