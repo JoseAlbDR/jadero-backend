@@ -7,6 +7,7 @@ import express from "express";
 import notFoundMiddleware from "./middleware/not-found";
 import errorHandlerMiddleware from "./middleware/error-handler";
 import projectRouter from "./routes/projectRoutes";
+import contactRouter from "./routes/formRoutes";
 import dbConnect from "./db/connect";
 
 // Extra security
@@ -45,7 +46,7 @@ cloudinary.config({
 });
 
 app.use("/api/v1/projects", projectRouter);
-
+app.use("/api/v1/contact", contactRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
